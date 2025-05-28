@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 import requests
 from pydantic import BaseModel
+import json
 
 city_router = APIRouter()
 
@@ -34,9 +35,14 @@ def getWeatherData(data):
     weather = Weather(**temp)
     return weather
 
+def getCityCoord(city: str):
+    cityParam = requests.get(f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1&language=en&format=json")
+    cityParam = cityParam.json()
+    return {"latitude": cityParam['results'][0]["latitude"], "longitude": cityParam['results'][0]['longitude']}
 
 @city_router.get("/{city}")
 def get_city(city: str| None = "Warsaw"):
-    requestWeather = requests.get("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m&forecast_days=1")
+    cityCord = getCityCoord(city)
+    requestWeather = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={cityCord['latitude']}&longitude={cityCord['longitude']}&current=temperature_2m&forecast_days=1")
     currentWeather = getWeatherData(requestWeather.json())
     return currentWeather
