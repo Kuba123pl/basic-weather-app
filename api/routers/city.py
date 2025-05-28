@@ -40,9 +40,20 @@ def getCityCoord(city: str):
     cityParam = cityParam.json()
     return {"latitude": cityParam['results'][0]["latitude"], "longitude": cityParam['results'][0]['longitude']}
 
-@city_router.get("/{city}")
-def get_city(city: str| None = "Warsaw"):
+def checkRainLevel(coordinates: str):
+    requestRainLevel = requests.get((f"https://api.open-meteo.com/v1/forecast?latitude={coordinates['latitude']}&longitude={coordinates['longitude']}&current=rain"))
+    requestRainLevel = requestRainLevel.json()
+    return requestRainLevel['current']['rain']
+
+@city_router.get("/temperature/{city}")
+def get_city(city: str):
     cityCord = getCityCoord(city)
     requestWeather = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={cityCord['latitude']}&longitude={cityCord['longitude']}&current=temperature_2m&forecast_days=1")
     currentWeather = getWeatherData(requestWeather.json())
     return currentWeather
+
+@city_router.get("rain/{city}")
+def checkRain(city: str):
+    cityCord = getCityCoord(city)
+    rainStatus = checkRainLevel(cityCord)
+    return rainStatus#"Pada" if not rainStatus == 0 else "Nie pada"
