@@ -43,6 +43,7 @@ def getCityCoord(city: str):
 def checkRainLevel(coordinates: str):
     requestRainLevel = requests.get((f"https://api.open-meteo.com/v1/forecast?latitude={coordinates['latitude']}&longitude={coordinates['longitude']}&current=rain"))
     requestRainLevel = requestRainLevel.json()
+    print(requestRainLevel['current']['rain'])
     return requestRainLevel['current']['rain']
 
 @city_router.get("/temperature/{city}")
@@ -55,5 +56,6 @@ def get_city(city: str):
 @city_router.get("rain/{city}")
 def checkRain(city: str):
     cityCord = getCityCoord(city)
+    print(cityCord)
     rainStatus = checkRainLevel(cityCord)
-    return rainStatus#"Pada" if not rainStatus == 0 else "Nie pada"
+    return "Pada"
