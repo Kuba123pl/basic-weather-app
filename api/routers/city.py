@@ -2,7 +2,8 @@ from fastapi import APIRouter
 import requests
 from pydantic import BaseModel
 import json
-
+import logging
+from .weatherCodes import weather_status_codes as weatherDictionary
 city_router = APIRouter()
 
 
@@ -41,10 +42,10 @@ def getCityCoord(city: str):
     return {"latitude": cityParam['results'][0]["latitude"], "longitude": cityParam['results'][0]['longitude']}
 
 def checkRainLevel(coordinates: str):
-    requestRainLevel = requests.get((f"https://api.open-meteo.com/v1/forecast?latitude={coordinates['latitude']}&longitude={coordinates['longitude']}&current=rain"))
+    requestRainLevel = requests.get((f"https://api.open-meteo.com/v1/forecast?latitude={coordinates['latitude']}&longitude={coordinates['longitude']}&current=rain,weather_code"))
     requestRainLevel = requestRainLevel.json()
-    print(requestRainLevel['current']['rain'])
-    return requestRainLevel['current']['rain']
+    return {"Rain level:" : requestRainLevel['current']['rain'], 
+            "Current Weather": weatherDictionary[requestRainLevel['current']['weather_code']]}
 
 @city_router.get("/temperature/{city}")
 def get_city(city: str):
@@ -53,9 +54,8 @@ def get_city(city: str):
     currentWeather = getWeatherData(requestWeather.json())
     return currentWeather
 
-@city_router.get("rain/{city}")
+@city_router.get("/rain/{city}")
 def checkRain(city: str):
     cityCord = getCityCoord(city)
-    print(cityCord)
     rainStatus = checkRainLevel(cityCord)
-    return "Pada"
+    return rainStatus
