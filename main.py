@@ -1,5 +1,6 @@
 from fastapi import FastAPI,APIRouter,HTTPException
 from .api.routers.city import city_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -10,3 +11,10 @@ async def hello():
     return  {"API status":"Alive"}
 
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Or specify your frontend's URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
