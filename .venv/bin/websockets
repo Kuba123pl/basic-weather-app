@@ -1,4 +1,4 @@
-#!/workspaces/basic-weather-app/.venv/bin/python
+#!/home/kuba/git/basic-weather-app/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

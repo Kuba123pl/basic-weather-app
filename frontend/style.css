@@ -1,17 +1,55 @@
-body{
-    background-color:rgb(236, 234, 232);
+body, html {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+   
 }
-img {
-   width: 100%;
-   border-radius: 10px;
+.center-container {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  width: 100%;
 }
-.image{
-    width: 30%;
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  flex-flow: row;
+  font-family: "Oxygen Mono", monospace;
+  align-content: center;
 }
-.details{
-    width: 70%;
-    margin: 12px
+.form button {
+  height: 25px;
+  width: 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #888;
+  margin: 0;
+  padding: 6px;
 }
-.card {
-    border-radius: 20px;
+button:hover {
+  background-color: #b9b559;
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    align-content: center;
+    margin: auto;
+    padding: 0;
+    font-family: "Oxygen Mono", monospace;
+}
+.temperature {
+    width: 200px;
+    align-content: center;
+    text-align: center;
+}
+.temperature img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.weather_image {
+    text-align: center;
+    width: 1000px;
 }
