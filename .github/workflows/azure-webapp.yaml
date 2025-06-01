@@ -17,7 +17,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Zip static files
-        run: zip -r app.zip ./frontend
+        run: |
+          cd frontend 
+          zip -r ../app.zip .
+          cd ..
 
       - name: Uploud static files to Azure
         uses: azure/webapps-deploy@v2
