@@ -1,6 +1,6 @@
 name: AppServiceApp Basic Deployment
 
-run:
+on:
   workflow_dispatch:
 
 jobs:
