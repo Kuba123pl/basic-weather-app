@@ -13,3 +13,10 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Zip static files
+        run: zip -r app.zip ./frontend
+
+
