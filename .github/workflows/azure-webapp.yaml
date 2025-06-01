@@ -1,10 +1,10 @@
 name: AppServiceApp Basic Deployment
 
-run:
-  on:
-    push:
-      branch:
-        - home
+on:
+  push:
+    branch:
+      - home
+
 jobs:
   build:
     runs-on: ubuntu-latest
