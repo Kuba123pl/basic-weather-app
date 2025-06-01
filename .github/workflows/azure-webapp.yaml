@@ -2,7 +2,7 @@ name: AppServiceApp Basic Deployment
 
 on:
   push:
-    branch:
+    branches:
       - home
 
 jobs:
@@ -25,7 +25,6 @@ jobs:
       - name: Uploud static files to Azure
         uses: azure/webapps-deploy@v2
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME}}
           package: app.zip
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
