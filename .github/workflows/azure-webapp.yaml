@@ -22,6 +22,9 @@ jobs:
           zip -r ../app.zip .
           cd ..
 
+        - name: List files in ZIP
+          run: unzip -l app.zip
+
       - name: Uploud static files to Azure
         uses: azure/webapps-deploy@v2
         with:
