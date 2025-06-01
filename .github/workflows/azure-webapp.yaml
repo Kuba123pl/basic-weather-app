@@ -1,8 +1,10 @@
 name: AppServiceApp Basic Deployment
 
-on:
-  workflow_dispatch:
-
+run:
+  on:
+    push:
+      branch:
+        - home
 jobs:
   build:
     runs-on: ubuntu-latest
