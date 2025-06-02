@@ -15,7 +15,7 @@ jobs:
       - name: Zip content
         run: |
          cd frontend/
-         zip -r * frontend.zip .
+         zip -r frontend.zip .
          cd ..
       
       - name: List contents of ZIP file
