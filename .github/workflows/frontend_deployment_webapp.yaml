@@ -7,14 +7,16 @@ jobs:
   deploy-to-azure:
     runs-on: ubuntu-latest
     steps:
-      - name: Zip content
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: home
+
+      - name: Zip content
         run: |
-          cd frontend/
-          zip -r * frontend.zip .
-          cd ..
+         cd frontend/
+         zip -r * frontend.zip .
+         cd ..
 
       
 
