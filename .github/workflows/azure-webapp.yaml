@@ -1,9 +1,10 @@
 name: AppServiceApp Basic Deployment
 
 on:
-  push:
-    branches:
-      - home
+  workflow_dispatch:
+ # push:
+   # branches:
+     # - home
 
 jobs:
   build:
