@@ -17,6 +17,10 @@ jobs:
          cd frontend/
          zip -r * frontend.zip .
          cd ..
+      
+      - name: List contents of ZIP file
+        run: unzip -l frontend.zip
+
 
       - name: WebApp Deployment
         uses: azure/webapps-deploy@v2
