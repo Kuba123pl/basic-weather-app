@@ -1,5 +1,7 @@
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - home
 
 jobs:
   deploy-to-azure:
