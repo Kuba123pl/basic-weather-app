@@ -27,7 +27,7 @@ jobs:
         with:
           app-name: mainWebApp
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
-          package: frontend.zip
+          package: frontend.zip #needs to specify the file name or it didnt work
 
       
 
