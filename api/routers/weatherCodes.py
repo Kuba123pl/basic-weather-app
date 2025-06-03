@@ -28,5 +28,5 @@ weather_status_codes = {
     95: "Thunderstorm",
     96: "Thunderstorm with slight hail",
     99: "Thunderstorm with heavy hail",
-    100: "test1"
+    100: "test11"
 }
