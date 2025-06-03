@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - home
-      paths: 
-       - 'frontend/**'
-
+    paths:
+      - 'frontend/**'
 
 jobs:
   deploy-to-azure:
