@@ -2,6 +2,8 @@ on:
   push:
     branches:
       - home
+      - paths:
+        ./frontend
 
 jobs:
   deploy-to-azure:
