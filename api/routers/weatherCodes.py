@@ -1,3 +1,4 @@
+#test
 weather_status_codes = {
     0: "Clear sky",
     1: "Mainly clear",
