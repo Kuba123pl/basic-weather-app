@@ -27,5 +27,6 @@ weather_status_codes = {
     86: "Heavy snow showers",
     95: "Thunderstorm",
     96: "Thunderstorm with slight hail",
-    99: "Thunderstorm with heavy hail"
+    99: "Thunderstorm with heavy hail",
+    100: "test"
 }
