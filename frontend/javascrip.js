@@ -1,6 +1,3 @@
-console.log("Hello")
-//test comment 1
-
 document.getElementById("city_form").addEventListener("submit", function(event){
         event.preventDefault();
         let city = document.getElementById("city").value
@@ -35,7 +32,7 @@ document.getElementById("city_form").addEventListener("submit", function(event){
                     let temperature = data['current']['temperature_2m'] + "°C"
                     document.getElementById('temperature').textContent = temperature
                 }
-                    
+            //Rain status TO DO  
             }
         )
     }
