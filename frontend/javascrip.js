@@ -1,5 +1,5 @@
 console.log("Hello")
-//test comment
+//test comment 1
 
 document.getElementById("city_form").addEventListener("submit", function(event){
         event.preventDefault();
