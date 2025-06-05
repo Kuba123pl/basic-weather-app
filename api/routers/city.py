@@ -4,12 +4,12 @@ from pydantic import BaseModel
 import json
 from logging import INFO, Formatter, getLogger
 from .weatherCodes import weather_status_codes as weatherDictionary
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from azure.monitor.opentelemetry import configure_azure_monitor
 
 
 #load environmental variables
-load_dotenv()
+#load_dotenv()
 
 #set up logger name and formatter
 configure_azure_monitor(
