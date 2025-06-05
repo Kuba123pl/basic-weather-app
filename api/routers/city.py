@@ -2,8 +2,27 @@ from fastapi import APIRouter
 import requests
 from pydantic import BaseModel
 import json
-import logging
+from logging import INFO, Formatter, getLogger
 from .weatherCodes import weather_status_codes as weatherDictionary
+from dotenv import load_dotenv
+from azure.monitor.opentelemetry import configure_azure_monitor
+
+
+#load environmental variables
+load_dotenv()
+
+#set up logger name and formatter
+configure_azure_monitor(
+    logger_name = "my_azure_logger",
+    logging_formatter=Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+)
+
+#pass my azure logger to default logger and set level of logging to INFO
+logger = getLogger("my_azure_logger")
+logger.setLevel(INFO)
+
+
 city_router = APIRouter()
 
 
@@ -52,6 +71,7 @@ def get_city(city: str):
     cityCord = getCityCoord(city)
     requestWeather = requests.get(f"https://api.open-meteo.com/v1/forecast?latitude={cityCord['latitude']}&longitude={cityCord['longitude']}&current=temperature_2m&forecast_days=1")
     currentWeather = getWeatherData(requestWeather.json())
+    logger.info(currentWeather)
     return currentWeather
 
 @city_router.get("/rain/{city}")
